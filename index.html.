@@ -1,11 +1,190 @@
-<form action="/login" method="POST">
-  <h2>Login</h2>
-  
-  <label for="user">Username:</label>
-  <input type="text" id="user" name="username" required><br><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEC Portal - Sign In</title>
+    <style>
+        /* APEC Palette Colors */
+        :root {
+            --apec-blue: #004B87;
+            --apec-green: #008751;
+            --bg-light: #f4f7f9;
+            --text-dark: #222222;
+            --border-color: #d1d5db;
+        }
 
-  <label for="pass">Password:</label>
-  <input type="password" id="pass" name="password" required><br><br>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
 
-  <button type="submit">Sign In</button>
-</form>
+        .login-card {
+            background-color: #ffffff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+            border-top: 5px solid var(--apec-blue);
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Responsive image styling for the APEC Brand Asset */
+        .apec-logo {
+            width: 140px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        h2 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.5rem;
+            text-align: center;
+            color: var(--apec-blue);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666666;
+            font-size: 0.9rem;
+            margin: 0 0 2rem 0;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--apec-blue);
+            box-shadow: 0 0 0 3px rgba(0, 75, 135, 0.15);
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .remember-me input {
+            width: auto;
+        }
+
+        a {
+            color: var(--apec-blue);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--apec-green);
+            text-decoration: underline;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--apec-blue);
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-color: #003661;
+        }
+
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #888888;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <!-- Logo Section pointing to a standard web asset link -->
+        <div class="logo-container">
+            <img class="apec-logo" src="https://apec.org" alt="APEC Logo">
+        </div>
+
+        <h2>Asia-Pacific Economic Cooperation</h2>
+        <p class="subtitle">Authorized Personnel Access Portal</p>
+
+        <form action="/login-secure" method="POST">
+            
+            
+            <div class="form-group">
+                <label for="username">Username or Email</label>
+                <input type="text" id="username" name="username" autocomplete="username" placeholder="name@apec.org" required>
+            </div>
+
+            <!-- Credential Field -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" autocomplete="current-password" placeholder="••••••••" required>
+            </div>
+
+            <!-- Context Options -->
+            <div class="form-actions">
+                <label class="remember-me">
+                    <input type="checkbox" name="remember"> Remember session
+                </label>
+                <a href="/reset-password">Forgot password?</a>
+            </div>
+
+            <!-- Authentication Trigger -->
+            <button type="submit" class="submit-btn">Secure Log In</button>
+        </form>
+
+        <footer>
+            &copy; 2026 APEC Secretariat. All rights reserved.
+        </footer>
+    </div>
+
+</body>
+</html>
+
